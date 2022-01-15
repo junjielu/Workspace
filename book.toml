@@ -6,8 +6,8 @@ src = "src"
 title = "Ballad's workspace"
 
 [output.html]
-default-theme = "light"
-preferred-dark-theme = "navy"
+default-theme = "rust"
+preferred-dark-theme = "rust"
 google-analytics = "UA-160717450-2"
 git-repository-url = "https://github.com/junjielu/Workspace"
 git-repository-icon = "fa-github"
