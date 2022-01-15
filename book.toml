@@ -1,6 +1,6 @@
 [book]
 authors = ["Ballad"]
-language = "en"
+language = "zh-CN"
 multilingual = false
 src = "src"
 title = "Ballad's workspace"
