@@ -4,3 +4,18 @@ language = "zh-CN"
 multilingual = false
 src = "src"
 title = "Ballad's workspace"
+
+[output.html]
+default-theme = "light"
+preferred-dark-theme = "navy"
+google-analytics = "UA-160717450-2"
+git-repository-url = "https://github.com/junjielu/Workspace"
+git-repository-icon = "fa-github"
+edit-url-template = "https://github.com/junjielu/Workspace/edit/main/{path}"
+
+[output.html.fold]
+enable = false
+level = 0
+
+[output.html.search]
+limit-results = 15
