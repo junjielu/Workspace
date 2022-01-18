@@ -3,7 +3,7 @@
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
-        <title>Rust - Ballad&#x27;s workspace</title>
+        <title>Xcode使用的小tips - Ballad&#x27;s workspace</title>
 
 
         <!-- Custom HTML head -->
@@ -79,7 +79,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded "><a href="../../Introduction.html"><strong aria-hidden="true">1.</strong> Introduction</a></li><li class="spacer"></li><li class="chapter-item expanded "><div><strong aria-hidden="true">2.</strong> Tools</div></li><li><ol class="section"><li class="chapter-item expanded "><div><strong aria-hidden="true">2.1.</strong> Xcode</div></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../Tools/Xcode/tips.html"><strong aria-hidden="true">2.1.1.</strong> Xcode使用的小tips</a></li></ol></li></ol></li><li class="chapter-item expanded "><div><strong aria-hidden="true">3.</strong> Engineer</div></li><li class="chapter-item expanded "><div><strong aria-hidden="true">4.</strong> Computer Science</div></li><li class="chapter-item expanded "><div><strong aria-hidden="true">5.</strong> Programming Language</div></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../PL/Swift/swift.html"><strong aria-hidden="true">5.1.</strong> Swift</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../PL/Swift/performance.html"><strong aria-hidden="true">5.1.1.</strong> 编写高性能的Swift代码</a></li><li class="chapter-item expanded "><a href="../../PL/Swift/concurrency.html"><strong aria-hidden="true">5.1.2.</strong> Concurrency</a></li></ol></li><li class="chapter-item expanded "><a href="../../PL/Rust/rust.html" class="active"><strong aria-hidden="true">5.2.</strong> Rust</a></li><li class="chapter-item expanded "><a href="../../PL/Haskell/haskell.html"><strong aria-hidden="true">5.3.</strong> Haskell</a></li></ol></li><li class="chapter-item expanded "><div><strong aria-hidden="true">6.</strong> Life</div></li></ol>
+                <ol class="chapter"><li class="chapter-item expanded "><a href="../../Introduction.html"><strong aria-hidden="true">1.</strong> Introduction</a></li><li class="spacer"></li><li class="chapter-item expanded "><div><strong aria-hidden="true">2.</strong> Tools</div></li><li><ol class="section"><li class="chapter-item expanded "><div><strong aria-hidden="true">2.1.</strong> Xcode</div></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../Tools/Xcode/tips.html" class="active"><strong aria-hidden="true">2.1.1.</strong> Xcode使用的小tips</a></li></ol></li></ol></li><li class="chapter-item expanded "><div><strong aria-hidden="true">3.</strong> Engineer</div></li><li class="chapter-item expanded "><div><strong aria-hidden="true">4.</strong> Computer Science</div></li><li class="chapter-item expanded "><div><strong aria-hidden="true">5.</strong> Programming Language</div></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../PL/Swift/swift.html"><strong aria-hidden="true">5.1.</strong> Swift</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../PL/Swift/performance.html"><strong aria-hidden="true">5.1.1.</strong> 编写高性能的Swift代码</a></li><li class="chapter-item expanded "><a href="../../PL/Swift/concurrency.html"><strong aria-hidden="true">5.1.2.</strong> Concurrency</a></li></ol></li><li class="chapter-item expanded "><a href="../../PL/Rust/rust.html"><strong aria-hidden="true">5.2.</strong> Rust</a></li><li class="chapter-item expanded "><a href="../../PL/Haskell/haskell.html"><strong aria-hidden="true">5.3.</strong> Haskell</a></li></ol></li><li class="chapter-item expanded "><div><strong aria-hidden="true">6.</strong> Life</div></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -143,7 +143,35 @@
 
                 <div id="content" class="content">
                     <main>
-                        
+                        <h1 id="xcode使用的小tips"><a class="header" href="#xcode使用的小tips">Xcode使用的小tips</a></h1>
+<p>Xcode是iOS日常开发都会用到的工具，下面介绍一些能提升日常开发效率的操作。</p>
+<h2 id="编译耗时统计"><a class="header" href="#编译耗时统计">编译耗时统计</a></h2>
+<pre><code class="language-sh">defaults write com.apple.dt.Xcode ShowBuildOperationDuration -bool YES
+</code></pre>
+<p>命令行中执行后重启Xcode就能看到整个编译阶段的耗时了。如果想要了解详细的编译耗时信息，可以通过<code>Product -&gt;  Perform Action -&gt; Build with Timing Summary</code>来触发统计时间的编译。或者通过xcodebuild，加上<code>buildWithTimingSummary</code>来获得耗时分析。</p>
+<p>Swift编译提供了以下两个参数：</p>
+<ul>
+<li><code>Xfrontend -warn-long-function-bodies=&lt;millisecond&gt;</code></li>
+<li><code>Xfrontend -warn-long-expression-type-checking=&lt;millisecond&gt;</code></li>
+</ul>
+<p>分别对应了长函数体编译耗时警告和长类型检查耗时警告。</p>
+<p>一般这里输入 100 即可，表示对应类型耗时超过 100ms 将会提供警告。</p>
+<h2 id="快捷键"><a class="header" href="#快捷键">快捷键</a></h2>
+<p>快速打开：<strong>⇧ + ⌘ + O</strong></p>
+<p>Clean build：<strong>⇧ + ⌘ + K</strong></p>
+<p>在当前行打断点：<strong>⌘ +  \</strong></p>
+<p>打开文件跳转栏：<strong>⌃ + 6</strong></p>
+<p>调整缩进：<strong>⌃ + I</strong></p>
+<p>快速跳转到文件的目录：<strong>⌘ + ⇧ + J</strong></p>
+<p>打开关闭debug区域：<strong>⌘ + ⇧ + Y</strong></p>
+<p>多行编辑：<strong>⌥ + Hold left mouse</strong> 选中要编辑的行 <strong>→ ⌘ + Arrows</strong> 浏览行 <strong>→ ⌥ + Arrows</strong> 浏览词 → <strong>Shift + Arrows</strong> 选择 <strong>→ Shift + ⌥ + Arrows</strong> 选择词 <strong>→ Shift + ⌘ + Arrows</strong> 选择行</p>
+<h2 id="调试"><a class="header" href="#调试">调试</a></h2>
+<p>改变对象</p>
+<pre><code class="language-sh">e saveButton.setTitle(&quot;Saved&quot;, for: .normal)
+</code></pre>
+<h2 id="汇总"><a class="header" href="#汇总">汇总</a></h2>
+<p><a href="https://xcode-tips.github.io/">Xcode-tips</a></p>
+
                         <!-- Comments powered by giscus.app -->
                         <div id="comments" class="giscus">
                             <script src="https://giscus.app/client.js" data-repo="junjielu/Workspace"
@@ -156,11 +184,11 @@
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
-                            <a rel="prev" href="../../PL/Swift/concurrency.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                            <a rel="prev" href="../../Introduction.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                                 <i class="fa fa-angle-left"></i>
                             </a>
 
-                            <a rel="next" href="../../PL/Haskell/haskell.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                            <a rel="next" href="../../PL/Swift/swift.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                                 <i class="fa fa-angle-right"></i>
                             </a>
 
@@ -170,11 +198,11 @@
             </div>
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
-                    <a rel="prev" href="../../PL/Swift/concurrency.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                    <a rel="prev" href="../../Introduction.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                         <i class="fa fa-angle-left"></i>
                     </a>
 
-                    <a rel="next" href="../../PL/Haskell/haskell.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                    <a rel="next" href="../../PL/Swift/swift.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                         <i class="fa fa-angle-right"></i>
                     </a>
             </nav>
